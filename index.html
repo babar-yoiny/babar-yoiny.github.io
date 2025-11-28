@@ -1,1 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Anthony &amp; Miriam – Wedding</title>
 
+    <!-- This makes the page scale properly on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+        /* ========== GLOBAL STYLES ========== */
+
+        /* Reset some default spacing */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: "Georgia", "Times New Roman", serif;
+            color: #1f3442; /* dark blue-ish */
+            background-color: #ffffff;
+        }
+
+        a {
+            color: #1f3442;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Container that holds the two main columns */
+        .page {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ========== LEFT PANEL (PHOTO) ========== */
+
+        .left-panel {
+            position: fixed;   /* stays put while the right side scrolls */
+            top: 0;
+            left: 0;
+            width: 55vw;       /* adjust this if you want more/less width */
+            height: 100vh;
+            background-image: url("your-photo.jpg"); 
+            /* ^ Replace with your own image path */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Slight dark overlay so white text on top is readable */
+        .left-overlay {
+            position: absolute;
+            inset: 0;          /* shorthand for top:0; right:0; bottom:0; left:0 */
+            background: linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.4),
+                rgba(0, 0, 0, 0.1)
+            );
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 3rem;
+        }
+
+        .left-names {
+            font-size: 2.5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .left-subtitle {
+            font-size: 1rem;
+            color: #f0f0f0;
+            max-width: 22rem;
+        }
+
+        /* ========== RIGHT PANEL (SCROLLING CONTENT) ========== */
+
+        .right-panel {
+            margin-left: 55vw; /* same as .left-panel width */
+            width: 45vw;
+            padding: 2.5rem 4rem;
+        }
+
+        /* Top bar holds the language toggle on the right */
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Language toggle button */
+        .lang-toggle {
+            border: 1px solid #1f3442;
+            background-color: transparent;
+            color: #1f3442;
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px; /* pill shape */
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .lang-toggle:hover {
+            background-color: #1f3442;
+            color: #ffffff;
+        }
+
+        /* ========== HERO / SPLASH SECTION ========== */
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .hero {
+            text-align: center;
+        }
+
+        /* Placeholder for the doves illustration */
+        .doves-placeholder {
+            width: 100%;
+            height: 120px;
+            border-top: 1px solid #cccccc;
+            border-bottom: 1px solid #cccccc;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #888888;
+        }
+
+        .hero-day {
+            font-size: 1rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.7rem;
+        }
+
+        .hero-date {
+            font-size: 2.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .hero-location {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .countdown {
+            font-size: 0.9rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 0.7rem 1.8rem;
+            border-radius: 999px;
+            border: 1px solid #1f3442;
+            font-size: 0.9rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .btn-outline:hover {
+            background-color: #1f3442;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        /* ========== HEADINGS AND TEXT ========== */
+
+        h2 {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .divider {
+            width: 40%;
+            margin: 0 auto 2rem auto;
+            border-top: 1px solid #cccccc;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .icon-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .icon-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .section-links {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .section-links a {
+            margin: 0 0.7rem;
+        }
+
+        /* ========== MAP EMBED ========== */
+
+        .map-wrapper {
+            margin-top: 1.5rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #dddddd;
+        }
+
+        .map-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: 260px;
+            border: 0;
+        }
+
+        /* ========== FOOTER ========== */
+
+        footer {
+            text-align: center;
+            padding: 2rem 0 1rem 0;
+            font-size: 0.95rem;
+            border-top: 1px solid #eeeeee;
+        }
+
+        /* ========== MOBILE / TABLET RESPONSIVENESS ========== */
+
+        @media (max-width: 900px) {
+            .page {
+                flex-direction: column;
+            }
+
+            .left-panel {
+                position: relative;   /* no longer fixed on small screens */
+                width: 100%;
+                height: 60vh;        /* adjust as desired */
+            }
+
+            .right-panel {
+                margin-left: 0;
+                width: 100%;
+                padding: 1.5rem 1.3rem 2.5rem 1.3rem;
+            }
+
+            .left-overlay {
+                padding: 2rem 1.5rem;
+            }
+
+            .left-names {
+                font-size: 2rem;
+            }
+
+            .hero-date {
+                font-size: 1.8rem;
+            }
+
+            .hero-location {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- ========== LEFT PANEL (STATIC IMAGE) ========== -->
+    <aside class="left-panel">
+        <!-- The text overlay at the bottom of the photo -->
+        <div class="left-overlay">
+            <div class="left-names">Anthony &amp; Miriam</div>
+            <p class="left-subtitle">
+                We are excited to share our special day with you!
+            </p>
+        </div>
+    </aside>
+
+    <!-- ========== RIGHT PANEL (SCROLLING CONTENT) ========== -->
+    <main class="right-panel">
+        <!-- Top bar with language toggle button -->
+        <header class="top-bar">
+            <!--
+              This button currently just switches a CSS class on <body>.
+              You can later add Italian text blocks and show/hide them
+              based on the active language.
+            -->
+            <button id="lang-toggle" class="lang-toggle">
+                Italiano
+            </button>
+        </header>
+
+        <!-- ===== HERO / SPLASH SECTION ===== -->
+        <section class="hero" id="home">
+            <div class="doves-placeholder">
+                <!-- Replace this whole div later with your doves illustration -->
+                Doves illustration placeholder
+            </div>
+
+            <div class="hero-day">Friday</div>
+            <h1 class="hero-date">June 26, 2026</h1>
+            <div class="hero-location">Modica, Italy</div>
+
+            <!-- Countdown text will be filled by JavaScript -->
+            <div id="countdown" class="countdown">
+                <!-- Fallback text if JavaScript is disabled -->
+                Countdown loading...
+            </div>
+
+            <!-- Link to an RSVP section or external form -->
+            <a href="#rsvp" class="btn-outline">RSVP</a>
+        </section>
+
+        <!-- ===== SCHEDULE SECTION ===== -->
+        <section id="schedule">
+            <h2>Schedule</h2>
+            <div class="section-subtitle">Friday June 26, 2026</div>
+            <div class="divider"></div>
+
+            <h3 style="text-align:center; margin-bottom:0.5rem;">
+                Ceremony and Reception
+            </h3>
+            <p style="text-align:center; margin-bottom:1.2rem;">6:30 PM</p>
+
+            <p>
+                We will be having our ceremony in the garden with dinner and
+                drinks to follow in the plaza.
+            </p>
+
+            <ul class="icon-list">
+                <li>
+                    <strong>Attire:</strong> Black Tie
+                </li>
+                <li>
+                    <strong>Venue:</strong>
+                    <!-- You can update this text and link -->
+                    <a href="https://maps.app.goo.gl/" target="_blank" rel="noopener">
+                        Villa Gisana, Contrada Gisana, Modica, Italy
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Google Maps embed (you can paste your own embed code here) -->
+            <div class="map-wrapper">
+                <!--
+                  Replace the src URL below with the embed URL that Google Maps
+                  gives you for your exact venue. GitHub Pages will happily serve
+                  this static iframe.
+                -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53477.85387930319!2d14.777!3d36.848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1311d46f7d621bff%3A0x8f27c1dacbb036e4!2sModica%20RG%2C%20Italy!5e0!3m2!1sen!2sit!4v1700000000000"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <div class="section-links">
+                <!-- Replace these with real links or anchors as needed -->
+                <a href="#rsvp">Add to Calendar</a>
+                <a href="#where-to-stay">Where to Stay</a>
+                <a href="https://maps.app.goo.gl/" target="_blank" rel="noopener">
+                    Directions
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== WHERE TO STAY SECTION ===== -->
+        <section id="where-to-stay">
+            <h2>Where to Stay</h2>
+            <div class="divider"></div>
+
+            <p>
+                Regardless of where you choose to stay, you will most likely
+                need to rent a vehicle for the duration of your trip.
+            </p>
+
+            <p>
+                There is a plethora of options to choose from in Modica and near
+                the venue itself whether you wish to stay at an “agriturismo”,
+                Airbnb, or hotel. Please consult an online map for a better
+                understanding of travel time to the venue from whichever option
+                you decide.
+            </p>
+
+            <p>
+                Feel free to reach out to us if you are having trouble or desire
+                a second opinion!
+            </p>
+        </section>
+
+        <!-- ===== RSVP SECTION (SIMPLE PLACEHOLDER) ===== -->
+        <section id="rsvp">
+            <h2>RSVP</h2>
+            <div class="divider"></div>
+            <p>
+                You can link this section to an external RSVP form (for example,
+                Google Forms), or embed a form here in the future.
+            </p>
+            <p>
+                For now, please email us or contact us directly with your RSVP.
+            </p>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer>
+            <!-- Replace the email address with your own contact info -->
+            Contact us! &nbsp;
+            <a href="mailto:youremail@example.com">youremail@example.com</a>
+        </footer>
+    </main>
+</div>
+
+<!-- ========== SIMPLE JAVASCRIPT ========== -->
+<script>
+    // ===== COUNTDOWN TIMER =====
+    (function () {
+        // Set the wedding date (local time). You can adjust the time of day.
+        var weddingDate = new Date("2026-06-26T18:30:00"); // 6:30 PM local, adjust if needed
+
+        function updateCountdown() {
+            var now = new Date();
+            var diffMs = weddingDate - now;
+
+            var countdownElement = document.getElementById("countdown");
+
+            if (diffMs <= 0) {
+                countdownElement.textContent = "It is the big day!";
+                return;
+            }
+
+            var totalSeconds = Math.floor(diffMs / 1000);
+            var days = Math.floor(totalSeconds / (24 * 3600));
+            var hours = Math.floor((totalSeconds % (24 * 3600)) / 3600);
+            var minutes = Math.floor((totalSeconds % 3600) / 60);
+
+            // Format the text to look similar to your screenshot
+            countdownElement.textContent =
+                days + " DAYS " +
+                hours + " HRS " +
+                minutes + " MINS";
+        }
+
+        // Update once immediately, then every minute
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+    })();
+
+    // ===== LANGUAGE TOGGLE (BASIC STUB) =====
+    (function () {
+        var button = document.getElementById("lang-toggle");
+        var currentLang = "en"; // start in English
+
+        button.addEventListener("click", function () {
+            if (currentLang === "en") {
+                currentLang = "it";
+                // Here you could show Italian text and hide English text.
+                // For now we simply change the button label and a CSS class.
+                document.body.classList.add("lang-it");
+                button.textContent = "English";
+            } else {
+                currentLang = "en";
+                document.body.classList.remove("lang-it");
+                button.textContent = "Italiano";
+            }
+        });
+    })();
+</script>
+</body>
+</html>
