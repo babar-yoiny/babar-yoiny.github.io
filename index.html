@@ -7,6 +7,7 @@
     <!-- This makes the page scale properly on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Cambo font -->
     <link href="https://fonts.googleapis.com/css2?family=Cambo&display=swap" rel="stylesheet">
 
     <style>
@@ -52,7 +53,7 @@
         left: 0;
         width: 55vw;
         height: 100vh;
-        background-image: url("your-photo.jpg");
+        background-image: url("your-photo.jpg"); /* <- replace with your image */
         background-size: cover;
         background-position: center;
     }
@@ -309,8 +310,21 @@
             font-size: 0.97rem;
         }
     }
-</style>
 
+    /* ========== LANGUAGE VISIBILITY ========== */
+
+    .lang-it {
+        display: none;
+    }
+
+    body.lang-it-active .lang-en {
+        display: none;
+    }
+
+    body.lang-it-active .lang-it {
+        display: inline;
+    }
+    </style>
 </head>
 <body>
 <div class="page">
@@ -318,9 +332,16 @@
     <aside class="left-panel">
         <!-- The text overlay at the bottom of the photo -->
         <div class="left-overlay">
-            <div class="left-names">Anthony &amp; Miriam</div>
+            <div class="left-names">
+                Anthony &amp; Miriam
+            </div>
             <p class="left-subtitle">
-                We are excited to share our special day with you!
+                <span class="lang-en">
+                    We are excited to share our special day with you!
+                </span>
+                <span class="lang-it">
+                    Siamo felici di condividere con voi il nostro giorno speciale!
+                </span>
             </p>
         </div>
     </aside>
@@ -329,11 +350,6 @@
     <main class="right-panel">
         <!-- Top bar with language toggle button -->
         <header class="top-bar">
-            <!--
-              This button currently just switches a CSS class on <body>.
-              You can later add Italian text blocks and show/hide them
-              based on the active language.
-            -->
             <button id="lang-toggle" class="lang-toggle">
                 Italiano
             </button>
@@ -342,18 +358,30 @@
         <!-- ===== HERO / SPLASH SECTION ===== -->
         <section class="hero" id="home">
             <div class="doves-placeholder">
-                <!-- Replace this whole div later with your doves illustration -->
-                Doves illustration placeholder
+                <span class="lang-en">Doves illustration placeholder</span>
+                <span class="lang-it">Segnaposto per l’illustrazione delle colombe</span>
             </div>
 
-            <div class="hero-day">Friday</div>
-            <h1 class="hero-date">June 26, 2026</h1>
-            <div class="hero-location">Modica, Italy</div>
+            <div class="hero-day">
+                <span class="lang-en">Friday</span>
+                <span class="lang-it">Venerdì</span>
+            </div>
+
+            <h1 class="hero-date">
+                <span class="lang-en">June 26, 2026</span>
+                <span class="lang-it">26 Giugno 2026</span>
+            </h1>
+
+            <div class="hero-location">
+                <span class="lang-en">Modica, Italy</span>
+                <span class="lang-it">Modica, Italia</span>
+            </div>
 
             <!-- Countdown text will be filled by JavaScript -->
             <div id="countdown" class="countdown">
                 <!-- Fallback text if JavaScript is disabled -->
-                Countdown loading...
+                <span class="lang-en">Countdown loading...</span>
+                <span class="lang-it">Caricamento del conto alla rovescia...</span>
             </div>
 
             <!-- Link to an RSVP section or external form -->
@@ -362,40 +390,65 @@
 
         <!-- ===== SCHEDULE SECTION ===== -->
         <section id="schedule">
-            <h2>Schedule</h2>
-            <div class="section-subtitle">Friday June 26, 2026</div>
+            <h2>
+                <span class="lang-en">Schedule</span>
+                <span class="lang-it">Programma</span>
+            </h2>
+
+            <div class="section-subtitle">
+                <span class="lang-en">Friday June 26, 2026</span>
+                <span class="lang-it">Venerdì 26 Giugno 2026</span>
+            </div>
+
             <div class="divider"></div>
 
             <h3 style="text-align:center; margin-bottom:0.5rem;">
-                Ceremony and Reception
+                <span class="lang-en">Ceremony and Reception</span>
+                <span class="lang-it">Cerimonia e Ricevimento</span>
             </h3>
-            <p style="text-align:center; margin-bottom:1.2rem;">6:30 PM</p>
+
+            <p style="text-align:center; margin-bottom:1.2rem;">
+                <span class="lang-en">6:30 PM</span>
+                <span class="lang-it">18:30</span>
+            </p>
 
             <p>
-                We will be having our ceremony in the garden with dinner and
-                drinks to follow in the plaza.
+                <span class="lang-en">
+                    We will be having our ceremony in the garden with dinner and
+                    drinks to follow in the plaza.
+                </span>
+                <span class="lang-it">
+                    La cerimonia si terrà nel giardino, seguita da cena e drink nella piazza.
+                </span>
             </p>
 
             <ul class="icon-list">
                 <li>
-                    <strong>Attire:</strong> Black Tie
+                    <strong>
+                        <span class="lang-en">Attire:</span>
+                        <span class="lang-it">Dress code:</span>
+                    </strong>
+                    <span class="lang-en"> Black Tie</span>
+                    <span class="lang-it"> Cravatta nera (Black Tie)</span>
                 </li>
                 <li>
-                    <strong>Venue:</strong>
-                    <!-- You can update this text and link -->
+                    <strong>
+                        <span class="lang-en">Venue:</span>
+                        <span class="lang-it">Luogo:</span>
+                    </strong>
                     <a href="https://maps.app.goo.gl/" target="_blank" rel="noopener">
-                        Villa Gisana, Contrada Gisana, Modica, Italy
+                        <span class="lang-en">
+                            Villa Gisana, Contrada Gisana, Modica, Italy
+                        </span>
+                        <span class="lang-it">
+                            Villa Gisana, Contrada Gisana, Modica, Italia
+                        </span>
                     </a>
                 </li>
             </ul>
 
-            <!-- Google Maps embed (you can paste your own embed code here) -->
+            <!-- Google Maps embed (replace src with your own embed URL) -->
             <div class="map-wrapper">
-                <!--
-                  Replace the src URL below with the embed URL that Google Maps
-                  gives you for your exact venue. GitHub Pages will happily serve
-                  this static iframe.
-                -->
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53477.85387930319!2d14.777!3d36.848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1311d46f7d621bff%3A0x8f27c1dacbb036e4!2sModica%20RG%2C%20Italy!5e0!3m2!1sen!2sit!4v1700000000000"
                     loading="lazy"
@@ -404,36 +457,65 @@
             </div>
 
             <div class="section-links">
-                <!-- Replace these with real links or anchors as needed -->
-                <a href="#rsvp">Add to Calendar</a>
-                <a href="#where-to-stay">Where to Stay</a>
+                <a href="#rsvp">
+                    <span class="lang-en">Add to Calendar</span>
+                    <span class="lang-it">Aggiungi al Calendario</span>
+                </a>
+                <a href="#where-to-stay">
+                    <span class="lang-en">Where to Stay</span>
+                    <span class="lang-it">Dove Alloggiare</span>
+                </a>
                 <a href="https://maps.app.goo.gl/" target="_blank" rel="noopener">
-                    Directions
+                    <span class="lang-en">Directions</span>
+                    <span class="lang-it">Indicazioni</span>
                 </a>
             </div>
         </section>
 
         <!-- ===== WHERE TO STAY SECTION ===== -->
         <section id="where-to-stay">
-            <h2>Where to Stay</h2>
+            <h2>
+                <span class="lang-en">Where to Stay</span>
+                <span class="lang-it">Dove Alloggiare</span>
+            </h2>
             <div class="divider"></div>
 
             <p>
-                Regardless of where you choose to stay, you will most likely
-                need to rent a vehicle for the duration of your trip.
+                <span class="lang-en">
+                    Regardless of where you choose to stay, you will most likely
+                    need to rent a vehicle for the duration of your trip.
+                </span>
+                <span class="lang-it">
+                    Indipendentemente da dove scegliate di alloggiare, sarà probabilmente
+                    necessario noleggiare un’auto per tutta la durata del viaggio.
+                </span>
             </p>
 
             <p>
-                There is a plethora of options to choose from in Modica and near
-                the venue itself whether you wish to stay at an “agriturismo”,
-                Airbnb, or hotel. Please consult an online map for a better
-                understanding of travel time to the venue from whichever option
-                you decide.
+                <span class="lang-en">
+                    There is a plethora of options to choose from in Modica and near
+                    the venue itself whether you wish to stay at an “agriturismo”,
+                    Airbnb, or hotel. Please consult an online map for a better
+                    understanding of travel time to the venue from whichever option
+                    you decide.
+                </span>
+                <span class="lang-it">
+                    Ci sono numerose opzioni a Modica e vicino alla location, che si tratti
+                    di un “agriturismo”, un Airbnb o un hotel. Si consiglia di consultare
+                    una mappa online per capire meglio i tempi di percorrenza dalla vostra
+                    scelta fino alla location.
+                </span>
             </p>
 
             <p>
-                Feel free to reach out to us if you are having trouble or desire
-                a second opinion!
+                <span class="lang-en">
+                    Feel free to reach out to us if you are having trouble or desire
+                    a second opinion!
+                </span>
+                <span class="lang-it">
+                    Non esitate a contattarci se avete bisogno di aiuto o desiderate
+                    un secondo parere!
+                </span>
             </p>
         </section>
 
@@ -442,18 +524,31 @@
             <h2>RSVP</h2>
             <div class="divider"></div>
             <p>
-                You can link this section to an external RSVP form (for example,
-                Google Forms), or embed a form here in the future.
+                <span class="lang-en">
+                    You can link this section to an external RSVP form (for example,
+                    Google Forms), or embed a form here in the future.
+                </span>
+                <span class="lang-it">
+                    Potete collegare questa sezione a un modulo RSVP esterno (ad esempio
+                    Google Forms) o incorporare qui un modulo in futuro.
+                </span>
             </p>
             <p>
-                For now, please email us or contact us directly with your RSVP.
+                <span class="lang-en">
+                    For now, please email us or contact us directly with your RSVP.
+                </span>
+                <span class="lang-it">
+                    Per ora, inviateci un’email o contattateci direttamente per confermare
+                    la vostra presenza.
+                </span>
             </p>
         </section>
 
         <!-- ===== FOOTER ===== -->
         <footer>
-            <!-- Replace the email address with your own contact info -->
-            Contact us! &nbsp;
+            <span class="lang-en">Contact us!</span>
+            <span class="lang-it">Contattateci!</span>
+            &nbsp;
             <a href="mailto:youremail@example.com">youremail@example.com</a>
         </footer>
     </main>
@@ -461,19 +556,23 @@
 
 <!-- ========== SIMPLE JAVASCRIPT ========== -->
 <script>
+    // Global language state (shared by toggle + countdown)
+    var currentLang = "en";
+
     // ===== COUNTDOWN TIMER =====
     (function () {
-        // Set the wedding date (local time). You can adjust the time of day.
-        var weddingDate = new Date("2026-06-26T18:30:00"); // 6:30 PM local, adjust if needed
+        var weddingDate = new Date("2026-06-26T18:30:00"); // local time
 
         function updateCountdown() {
             var now = new Date();
             var diffMs = weddingDate - now;
-
             var countdownElement = document.getElementById("countdown");
 
             if (diffMs <= 0) {
-                countdownElement.textContent = "It is the big day!";
+                countdownElement.textContent =
+                    (currentLang === "it")
+                        ? "È il grande giorno!"
+                        : "It is the big day!";
                 return;
             }
 
@@ -482,34 +581,43 @@
             var hours = Math.floor((totalSeconds % (24 * 3600)) / 3600);
             var minutes = Math.floor((totalSeconds % 3600) / 60);
 
-            // Format the text to look similar to your screenshot
+            // Labels depend on current language
+            var daysLabel   = (currentLang === "it") ? "GIORNI" : "DAYS";
+            var hoursLabel  = (currentLang === "it") ? "ORE"    : "HRS";
+            var minsLabel   = (currentLang === "it") ? "MIN"    : "MINS";
+
             countdownElement.textContent =
-                days + " DAYS " +
-                hours + " HRS " +
-                minutes + " MINS";
+                days + " " + daysLabel + " " +
+                hours + " " + hoursLabel + " " +
+                minutes + " " + minsLabel;
         }
 
         // Update once immediately, then every minute
         updateCountdown();
         setInterval(updateCountdown, 60000);
+
+        // Expose updater so language toggle can force refresh
+        window._updateCountdown = updateCountdown;
     })();
 
-    // ===== LANGUAGE TOGGLE (BASIC STUB) =====
+    // ===== LANGUAGE TOGGLE =====
     (function () {
         var button = document.getElementById("lang-toggle");
-        var currentLang = "en"; // start in English
 
         button.addEventListener("click", function () {
             if (currentLang === "en") {
                 currentLang = "it";
-                // Here you could show Italian text and hide English text.
-                // For now we simply change the button label and a CSS class.
-                document.body.classList.add("lang-it");
+                document.body.classList.add("lang-it-active");
                 button.textContent = "English";
             } else {
                 currentLang = "en";
-                document.body.classList.remove("lang-it");
+                document.body.classList.remove("lang-it-active");
                 button.textContent = "Italiano";
+            }
+
+            // Re-render countdown in the new language if available
+            if (typeof window._updateCountdown === "function") {
+                window._updateCountdown();
             }
         });
     })();
