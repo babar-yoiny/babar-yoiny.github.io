@@ -7,287 +7,310 @@
     <!-- This makes the page scale properly on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link href="https://fonts.googleapis.com/css2?family=Cambo&display=swap" rel="stylesheet">
+
     <style>
-        /* ========== GLOBAL STYLES ========== */
+    /* ========== GLOBAL STYLES ========== */
 
-        /* Reset some default spacing */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-        html, body {
-            height: 100%;
-            font-family: "Georgia", "Times New Roman", serif;
-            color: #1f3442; /* dark blue-ish */
-            background-color: #ffffff;
-        }
+    html, body {
+        height: 100%;
+        font-family: "Cambo", serif;
+        color: #1f3442;
+        background-color: #ffffff;
+    }
 
-        a {
-            color: #1f3442;
-            text-decoration: none;
-        }
+    body {
+        line-height: 1.6;
+        font-size: 16px; /* base size for rem units */
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
+    a {
+        color: #1f3442;
+        text-decoration: none;
+    }
 
-        /* Container that holds the two main columns */
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .page {
+        display: flex;
+        min-height: 100vh;
+    }
+
+    /* ========== LEFT PANEL (PHOTO) ========== */
+
+    .left-panel {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 55vw;
+        height: 100vh;
+        background-image: url("your-photo.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+
+    .left-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.10)
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 3.2rem;
+    }
+
+    .left-names {
+        font-size: 3.1rem;              /* big name text */
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin-bottom: 0.6rem;
+    }
+
+    .left-subtitle {
+        font-size: 1.05rem;
+        color: #f3f3f3;
+        max-width: 22rem;
+    }
+
+    /* ========== RIGHT PANEL (SCROLLING CONTENT) ========== */
+
+    .right-panel {
+        margin-left: 55vw;
+        width: 45vw;
+        padding: 2.8rem 4.2rem 3.5rem 4.2rem;
+    }
+
+    .top-bar {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-bottom: 2.2rem;
+    }
+
+    .lang-toggle {
+        border: 1px solid #1f3442;
+        background-color: transparent;
+        color: #1f3442;
+        padding: 0.45rem 1.1rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    .lang-toggle:hover {
+        background-color: #1f3442;
+        color: #ffffff;
+    }
+
+    /* ========== HERO / SPLASH SECTION ========== */
+
+    section {
+        margin-bottom: 4.2rem;
+    }
+
+    .hero {
+        text-align: center;
+    }
+
+    .doves-placeholder {
+        width: 100%;
+        height: 120px;
+        border-top: 1px solid #cccccc;
+        border-bottom: 1px solid #cccccc;
+        margin-bottom: 2.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        color: #888888;
+    }
+
+    .hero-day {
+        font-size: 0.85rem;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        margin-bottom: 0.9rem;
+    }
+
+    .hero-date {
+        font-size: 2.6rem;
+        line-height: 1.2;
+        margin-bottom: 0.3rem;
+    }
+
+    .hero-location {
+        font-size: 1.35rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .countdown {
+        font-size: 0.78rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        margin-bottom: 2.2rem;
+    }
+
+    .btn-outline {
+        display: inline-block;
+        padding: 0.7rem 2.1rem;
+        border-radius: 999px;
+        border: 1px solid #1f3442;
+        font-size: 0.9rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+    }
+
+    .btn-outline:hover {
+        background-color: #1f3442;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    /* ========== HEADINGS AND TEXT ========== */
+
+    h1, h2, h3 {
+        font-weight: normal;  /* Cambo looks best at regular weight */
+    }
+
+    h2 {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 1.6rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 1.6rem;
+    }
+
+    .divider {
+        width: 42%;
+        margin: 0 auto 2.1rem auto;
+        border-top: 1px solid #cccccc;
+    }
+
+    p {
+        line-height: 1.65;
+        font-size: 1rem;
+        margin-bottom: 0.9rem;
+    }
+
+    .icon-list {
+        list-style: none;
+        margin: 1.1rem 0;
+        padding-left: 0;
+        font-size: 0.98rem;
+    }
+
+    .icon-list li {
+        margin-bottom: 0.55rem;
+    }
+
+    .section-links {
+        margin-top: 1.8rem;
+        text-align: center;
+        font-size: 0.95rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .section-links a {
+        margin: 0 0.8rem;
+    }
+
+    /* ========== MAP EMBED ========== */
+
+    .map-wrapper {
+        margin-top: 1.6rem;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #dddddd;
+    }
+
+    .map-wrapper iframe {
+        display: block;
+        width: 100%;
+        height: 260px;
+        border: 0;
+    }
+
+    /* ========== FOOTER ========== */
+
+    footer {
+        text-align: center;
+        padding: 2.3rem 0 1.4rem 0;
+        font-size: 0.95rem;
+        border-top: 1px solid #eeeeee;
+    }
+
+    /* ========== MOBILE / TABLET RESPONSIVENESS ========== */
+
+    @media (max-width: 900px) {
         .page {
-            display: flex;
-            min-height: 100vh;
+            flex-direction: column;
         }
-
-        /* ========== LEFT PANEL (PHOTO) ========== */
 
         .left-panel {
-            position: fixed;   /* stays put while the right side scrolls */
-            top: 0;
-            left: 0;
-            width: 55vw;       /* adjust this if you want more/less width */
-            height: 100vh;
-            background-image: url("your-photo.jpg"); 
-            /* ^ Replace with your own image path */
-            background-size: cover;
-            background-position: center;
+            position: relative;
+            width: 100%;
+            height: 60vh;
         }
 
-        /* Slight dark overlay so white text on top is readable */
+        .right-panel {
+            margin-left: 0;
+            width: 100%;
+            padding: 1.7rem 1.4rem 2.6rem 1.4rem;
+        }
+
         .left-overlay {
-            position: absolute;
-            inset: 0;          /* shorthand for top:0; right:0; bottom:0; left:0 */
-            background: linear-gradient(
-                to top,
-                rgba(0, 0, 0, 0.4),
-                rgba(0, 0, 0, 0.1)
-            );
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 3rem;
+            padding: 2.2rem 1.6rem;
         }
 
         .left-names {
-            font-size: 2.5rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #ffffff;
-            margin-bottom: 0.5rem;
+            font-size: 2.3rem;
+            letter-spacing: 0.20em;
         }
 
         .left-subtitle {
-            font-size: 1rem;
-            color: #f0f0f0;
-            max-width: 22rem;
-        }
-
-        /* ========== RIGHT PANEL (SCROLLING CONTENT) ========== */
-
-        .right-panel {
-            margin-left: 55vw; /* same as .left-panel width */
-            width: 45vw;
-            padding: 2.5rem 4rem;
-        }
-
-        /* Top bar holds the language toggle on the right */
-        .top-bar {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        /* Language toggle button */
-        .lang-toggle {
-            border: 1px solid #1f3442;
-            background-color: transparent;
-            color: #1f3442;
-            padding: 0.4rem 0.9rem;
-            border-radius: 999px; /* pill shape */
-            font-size: 0.85rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            cursor: pointer;
-        }
-
-        .lang-toggle:hover {
-            background-color: #1f3442;
-            color: #ffffff;
-        }
-
-        /* ========== HERO / SPLASH SECTION ========== */
-
-        section {
-            margin-bottom: 4rem;
-        }
-
-        .hero {
-            text-align: center;
-        }
-
-        /* Placeholder for the doves illustration */
-        .doves-placeholder {
-            width: 100%;
-            height: 120px;
-            border-top: 1px solid #cccccc;
-            border-bottom: 1px solid #cccccc;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: #888888;
-        }
-
-        .hero-day {
-            font-size: 1rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-bottom: 0.7rem;
+            font-size: 0.98rem;
         }
 
         .hero-date {
-            font-size: 2.2rem;
-            margin-bottom: 0.3rem;
+            font-size: 2.1rem;
         }
 
         .hero-location {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
         }
-
-        .countdown {
-            font-size: 0.9rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-        }
-
-        .btn-outline {
-            display: inline-block;
-            padding: 0.7rem 1.8rem;
-            border-radius: 999px;
-            border: 1px solid #1f3442;
-            font-size: 0.9rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-
-        .btn-outline:hover {
-            background-color: #1f3442;
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        /* ========== HEADINGS AND TEXT ========== */
 
         h2 {
-            font-size: 1.8rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-subtitle {
-            font-size: 1rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .divider {
-            width: 40%;
-            margin: 0 auto 2rem auto;
-            border-top: 1px solid #cccccc;
+            font-size: 1.7rem;
         }
 
         p {
-            line-height: 1.6;
-            font-size: 0.95rem;
-            margin-bottom: 0.8rem;
+            font-size: 0.97rem;
         }
+    }
+</style>
 
-        .icon-list {
-            list-style: none;
-            margin: 1rem 0;
-        }
-
-        .icon-list li {
-            margin-bottom: 0.5rem;
-        }
-
-        .section-links {
-            margin-top: 1.5rem;
-            text-align: center;
-            font-size: 0.95rem;
-        }
-
-        .section-links a {
-            margin: 0 0.7rem;
-        }
-
-        /* ========== MAP EMBED ========== */
-
-        .map-wrapper {
-            margin-top: 1.5rem;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #dddddd;
-        }
-
-        .map-wrapper iframe {
-            display: block;
-            width: 100%;
-            height: 260px;
-            border: 0;
-        }
-
-        /* ========== FOOTER ========== */
-
-        footer {
-            text-align: center;
-            padding: 2rem 0 1rem 0;
-            font-size: 0.95rem;
-            border-top: 1px solid #eeeeee;
-        }
-
-        /* ========== MOBILE / TABLET RESPONSIVENESS ========== */
-
-        @media (max-width: 900px) {
-            .page {
-                flex-direction: column;
-            }
-
-            .left-panel {
-                position: relative;   /* no longer fixed on small screens */
-                width: 100%;
-                height: 60vh;        /* adjust as desired */
-            }
-
-            .right-panel {
-                margin-left: 0;
-                width: 100%;
-                padding: 1.5rem 1.3rem 2.5rem 1.3rem;
-            }
-
-            .left-overlay {
-                padding: 2rem 1.5rem;
-            }
-
-            .left-names {
-                font-size: 2rem;
-            }
-
-            .hero-date {
-                font-size: 1.8rem;
-            }
-
-            .hero-location {
-                font-size: 1.1rem;
-            }
-        }
-    </style>
 </head>
 <body>
 <div class="page">
