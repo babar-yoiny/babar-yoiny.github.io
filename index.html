@@ -83,7 +83,7 @@
     .left-subtitle {
         font-size: 1.05rem;
         color: #f3f3f3;
-        max-width: 22rem;
+        max-width: none; /* allow full width so text can be on one line */
     }
 
     /* ========== RIGHT PANEL (SCROLLING CONTENT) ========== */
@@ -386,10 +386,11 @@
 
             <!-- Link to an RSVP section or external form -->
             <a href="https://prettyform.addxt.com/a/form/vf/1FAIpQLSd0g_HDurpMkg7uJoZ7onrLOZZpa-vYlXrm_8j_i8ppmSGzxg" 
-                class="btn-outline"
-                target="_blank"
-                rel="noopener"
-                >RSVP</a>
+               class="btn-outline"
+               target="_blank"
+               rel="noopener">
+                RSVP
+            </a>
         </section>
 
         <!-- ===== SCHEDULE SECTION ===== -->
@@ -427,66 +428,53 @@
             </p>
 
             <ul class="icon-list">
-    <li>
-        <strong>
-            <span class="lang-en">Attire:</span>
-            <span class="lang-it">Abbigliamento:</span>
-        </strong>
-        <span class="lang-en"> Black Tie</span>
-        <span class="lang-it"> Elegante</span>
-    </li>
+                <li>
+                    <strong>
+                        <span class="lang-en">Attire:</span>
+                        <span class="lang-it">Abbigliamento:</span>
+                    </strong>
+                    <span class="lang-en"> Black Tie</span>
+                    <span class="lang-it"> Elegante</span>
+                </li>
 
-    <li>
-        <strong>
-            <span class="lang-en">Venue:</span>
-            <span class="lang-it">Luogo:</span>
-        </strong>
+                <li>
+                    <strong>
+                        <span class="lang-en">Venue:</span>
+                        <span class="lang-it">Luogo:</span>
+                    </strong>
 
-        <!-- Clickable link to the exact venue on Google Maps -->
-        <a href="https://www.google.com/maps/search/?api=1&query=36.778054259797315,14.805571367948323"
-           target="_blank"
-           rel="noopener">
-            <span class="lang-en">
-                Villa Gisana, Contrada Gisana, Modica, Italy
-            </span>
-            <span class="lang-it">
-                Villa Gisana, Contrada Gisana, Modica, Italia
-            </span>
-        </a>
-    </li>
-</ul>
+                    <!-- Clickable link to the exact venue on Google Maps -->
+                    <a href="https://www.google.com/maps/search/?api=1&query=36.778054259797315,14.805571367948323"
+                       target="_blank"
+                       rel="noopener">
+                        <span class="lang-en">
+                            Villa Gisana, Contrada Gisana, Modica, Italy
+                        </span>
+                        <span class="lang-it">
+                            Villa Gisana, Contrada Gisana, Modica, Italia
+                        </span>
+                    </a>
+                </li>
+            </ul>
 
-<!-- Google Maps Embed Block -->
-<div class="map-wrapper">
-    <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d530.0000000000001!2d14.805571367948323!3d36.778054259797315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sit!4v0000000000000"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-</div>
+            <!-- Google Maps Embed Block -->
+            <div class="map-wrapper">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d530.0000000000001!2d14.805571367948323!3d36.778054259797315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sit!4v0000000000000"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
 
-<!-- Directions / Add to Calendar / Where to Stay -->
-<div class="section-links">
-
-    <!-- Directions using user's current location -->
-    <a href="https://www.google.com/maps/dir/?api=1&origin=Current+Location&destination=36.778054259797315,14.805571367948323"
-       target="_blank"
-       rel="noopener">
-        <span class="lang-en">Directions</span>
-        <span class="lang-it">Indicazioni</span>
-    </a>
-
-    <a href="#where-to-stay">
-        <span class="lang-en">Where to Stay</span>
-        <span class="lang-it">Dove Alloggiare</span>
-    </a>
-
-    <a href="#rsvp">
-        <span class="lang-en">Add to Calendar</span>
-        <span class="lang-it">Aggiungi al Calendario</span>
-    </a>
-</div>
-
+            <!-- Directions only -->
+            <div class="section-links">
+                <a href="https://www.google.com/maps/dir/?api=1&origin=Current+Location&destination=36.778054259797315,14.805571367948323"
+                   target="_blank"
+                   rel="noopener">
+                    <span class="lang-en">Directions</span>
+                    <span class="lang-it">Indicazioni</span>
+                </a>
+            </div>
         </section>
 
         <!-- ===== WHERE TO STAY SECTION ===== -->
@@ -595,7 +583,7 @@
             var totalSeconds = Math.floor(diffMs / 1000);
             var days = Math.floor(totalSeconds / (24 * 3600));
             var hours = Math.floor((totalSeconds % (24 * 3600)) / 3600);
-            var minutes = Math.floor((totalSeconds % 3600) / 60);
+            var minutes = Math.floor((totalSeconds % (3600)) / 60);
 
             // Labels depend on current language
             var daysLabel   = (currentLang === "it") ? "GIORNI" : "DAYS";
