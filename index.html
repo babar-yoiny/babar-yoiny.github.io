@@ -129,17 +129,25 @@
     }
 
     .doves-placeholder {
-        width: 100%;
-        height: 120px;
-        border-top: 1px solid #cccccc;
-        border-bottom: 1px solid #cccccc;
-        margin-bottom: 2.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.8rem;
-        color: #888888;
-    }
+    width: 100%;
+    height: 120px;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    margin-bottom: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;       /* keep it neat if image is tall */
+}
+
+/* Doves image inside the placeholder */
+.doves-placeholder img {
+    max-height: 80px;      /* adjust this number if you want it larger/smaller */
+    width: auto;
+    height: auto;
+    display: block;
+}
+
 
     .hero-day {
         font-size: 0.85rem;
@@ -358,9 +366,10 @@
         <!-- ===== HERO / SPLASH SECTION ===== -->
         <section class="hero" id="home">
             <div class="doves-placeholder">
-                <span class="lang-en">Doves illustration placeholder</span>
-                <span class="lang-it">Segnaposto per l’illustrazione delle colombe</span>
+                <!-- Put your PNG/JPG in the same folder as this HTML and change the src filename below -->
+                <img src="doves_thinner.png" alt="Doves illustration">
             </div>
+
 
             <div class="hero-day">
                 <span class="lang-en">Friday</span>
